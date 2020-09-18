@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_205240) do
     t.string "message_id"
     t.string "to_number"
     t.string "message"
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
