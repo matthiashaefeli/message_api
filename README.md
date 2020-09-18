@@ -1,24 +1,79 @@
-# README
+# Message
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Message is a Rails Api that receives POST request with params to_number and message.
 
-Things you may want to cover:
+## How to set up locally
 
-* Ruby version
+```
+$ git clone https://github.com/matthiashaefeli/travel.git
+$ cd travel
+$ bundle install
+$ yarn
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```
+ ## Running the server
 
-* System dependencies
+ ```
+ $ rails s
+ ```
 
-* Configuration
+ ## Deploy to Heroku
 
-* Database creation
+```
+$ heroku login
+$ heroku create api_name
+$ git config --list | grep heroku    # verify remote
+$ git push heroku master
+$ heroku ps:scale web=1   # ensure one dyno is running
+$ heroku ps # check dynos
+$ heroku run rake db:migrate
+$ heroku run rake db:seed
+```
 
-* Database initialization
+## Postman commands
 
-* How to run the test suite
+### Send new Message
 
-* Services (job queues, cache servers, search engines, etc.)
+POST: http://localhost:3000/new_message
 
-* Deployment instructions
+Headers: KEY: Content-Type VALUE: application/json
 
-* ...
+Body: raw
+
+```
+{
+    "to_number": "5555555555",
+    "message": "Message"
+}
+```
+ The Api will respond with:
+
+ ```
+ {
+    "id": 1,
+    "message_id": "39233f8d-7254-4684-80f5-6619df244493",
+    "to_number": "5555555555",
+    "message": "Message",
+    "status": "pending",
+    "provider_id": 1,
+    "created_at": "2020-09-19T00:00:00.540Z",
+    "updated_at": "2020-09-19T00:00:00.292Z"
+}
+```
+
+### Update Message status
+
+POST: http://localhost:3000/update_message
+
+Headers: KEY: Content-Type VALUE: application/json
+
+Body: raw
+
+```
+{
+    "message_id": "39233f8d-7254-4684-80f5-6619df244493",
+    "status": "delivered"
+}
+```
