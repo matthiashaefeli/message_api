@@ -2,15 +2,34 @@ require 'net/http'
 require 'net/https'
 
 class MessageCreator
-  def self.send_message(message)
-    provider1 = 'https://jo3kcwlvke.execute-api.us-west-2.amazonaws.com/dev/provider1'
-    provider1 = 'https://jo3kcwlvke.execute-api.us-west-2.amazonaws.com/dev/provider2'
 
-    uri = URI(provider1)
+  def initialize(message)
+    @message = message
+    @providers_down = []
+    @loop = false
+  end
 
-    parameters = { "to_number": message.to_number,
-                   "message": message.message,
-                   "callback_url": 'https://ex.com' }.to_json
+  def send_message
+    provider = Provider.ready_to_use(self)
+
+    if provider.nil?
+      @message.status = 'failed'
+      @message.save
+      return
+    end
+
+    if !call(provider)
+      @providers_down.push(provider.id)
+      send_message
+    end
+  end
+
+  def call(provider)
+    uri = URI(provider.url)
+
+    parameters = { "to_number": @message.to_number,
+                  "message": @message.message,
+                  "callback_url": 'https://ex.com' }.to_json
 
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
@@ -20,10 +39,25 @@ class MessageCreator
     response_hash = JSON.parse(res.body, symbolize_names: true)
 
     if res.code == '200'
-      message.message_id = response_hash[:message_id]
-      message.save
+      @message.message_id = response_hash[:message_id]
+      @message.provider_id = provider.id
+      @message.save
+      true
     else
-      # try with other provider
+      false
     end
+  end
+
+  def providers_down
+    @providers_down
+  end
+
+  def reset_providers_down
+    @providers_down = []
+    @loop = true
+  end
+
+  def loop
+    @loop
   end
 end

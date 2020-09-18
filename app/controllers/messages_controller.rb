@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     message = Message.new(message: params[:message], to_number: params[:to_number])
     if message.valid?
       message.save
-      MessageCreator.send_message(message)
+      MessageCreator.new(message).send_message
       render json: message
     else
       render json: { error: message.errors.full_messages }, status: :bad_request
