@@ -14,5 +14,8 @@ class MessagesController < ApplicationController
   end
 
   def update
+    message = Message.find_by(message_id: params[:message_id])
+    message.status = params[:status]
+    message.save
   end
 end
