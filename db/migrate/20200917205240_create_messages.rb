@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration[6.0]
       t.string :message_id
       t.string :to_number
       t.string :message
-      t.string :status
+      t.string :status, default: 'pending'
 
       t.timestamps
     end
