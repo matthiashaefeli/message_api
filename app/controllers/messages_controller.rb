@@ -1,10 +1,11 @@
+# Message Controller
 class MessagesController < ApplicationController
   def index
     messages =
       if params[:to_number]
         Message.where(to_number: params[:to_number])
       elsif params[:provider_id]
-        Message.where(provider_id: prams[:provider_id])
+        Message.where(provider_id: params[:provider_id])
       else
         Message.all
       end

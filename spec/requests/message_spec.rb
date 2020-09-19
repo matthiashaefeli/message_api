@@ -17,7 +17,7 @@ RSpec.describe 'Message', type: :request do
       message1 = FactoryBot.create(:message, provider_id: 1)
       message2 = FactoryBot.create(:message, provider_id: 1)
       message3 = FactoryBot.create(:message, provider_id: 2)
-      get '/message', params: { "provider": 1 }
+      get '/message', params: { "provider": "1" }
       res = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(res.any? { |m| m['id'] == message1.id }).to be true

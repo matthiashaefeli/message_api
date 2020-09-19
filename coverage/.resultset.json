@@ -584,6 +584,7 @@
       },
       "/Users/matthiashaefeli/Documents/projects/interview_challenges/message_api/app/models/message.rb": {
         "lines": [
+          null,
           1,
           1,
           1,
@@ -600,6 +601,7 @@
       },
       "/Users/matthiashaefeli/Documents/projects/interview_challenges/message_api/app/models/provider.rb": {
         "lines": [
+          null,
           1,
           1,
           1,
@@ -706,6 +708,7 @@
       },
       "/Users/matthiashaefeli/Documents/projects/interview_challenges/message_api/app/controllers/messages_controller.rb": {
         "lines": [
+          null,
           1,
           1,
           null,
@@ -741,6 +744,7 @@
       },
       "/Users/matthiashaefeli/Documents/projects/interview_challenges/message_api/app/controllers/providers_controller.rb": {
         "lines": [
+          null,
           1,
           1,
           1,
@@ -772,6 +776,6 @@
         ]
       }
     },
-    "timestamp": 1600533157
+    "timestamp": 1600534013
   }
 }
