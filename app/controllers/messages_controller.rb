@@ -1,6 +1,13 @@
 class MessagesController < ApplicationController
   def index
-    messages = Message.where(to_number: params[:to_number])
+    messages =
+      if params[:to_number]
+        Message.where(to_number: params[:to_number])
+      elsif params[:provider_id]
+        Message.where(provider_id: prams[:provider_id])
+      else
+        Message.all
+      end
     render json: messages
   end
 
