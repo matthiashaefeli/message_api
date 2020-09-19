@@ -1,10 +1,11 @@
 class ProvidersController < ApplicationController
   def index
+    providers = Provider.all
+    render json: providers
   end
 
   def create
     provider = Provider.new(provider_params)
-    provider.count = 0
     if provider.valid?
       provider.save
       render json: provider
@@ -13,12 +14,15 @@ class ProvidersController < ApplicationController
     end
   end
 
-  def destroy
+  def update
+    provider = Provider.find(params[:provider][:id])
+    provider.update_attributes(provider_params)
+    render json: provider
   end
 
   private
 
     def provider_params
-      params.require(:provider).permit(:name, :url, :load)
+      params.require(:provider).permit(:name, :url, :load, :active)
     end
 end

@@ -36,4 +36,28 @@ RSpec.describe 'Provider', type: :request do
     expect(response.status).to eq 400
     expect(res['error']).to eq(['Load is not a number'])
   end
+
+  it 'returns all providers' do
+    provider = FactoryBot.create(:provider)
+    get '/provider'
+    res = JSON.parse(response.body)
+    expect(response.status).to eq 200
+    expect(res.any? { |p| p['id'] == provider.id }).to be true
+  end
+
+  it 'updates provider active' do
+    provider = FactoryBot.create(:provider)
+    post '/update_provider', params: { provider: { "id": provider.id,
+                                                   "active": false } }
+    provider.reload
+    expect(provider.active).to be false
+  end
+
+  it 'updates provider load' do
+    provider = FactoryBot.create(:provider)
+    post '/update_provider', params: { provider: { "id": provider.id,
+                                                   "load": 30 } }
+    provider.reload
+    expect(provider.load).to eq(30)
+  end
 end

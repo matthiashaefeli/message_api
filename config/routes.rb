@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get '/message', to: 'messages#index'
   get '/provider', to: 'providers#index'
   post '/provider', to: 'providers#create'
-  post '/delete_provider', to: 'providers#delete'
+  post '/update_provider', to: 'providers#update'
 end

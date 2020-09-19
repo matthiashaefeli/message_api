@@ -4,7 +4,8 @@ class CreateProviders < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :url
       t.integer :load
-      t.integer :count
+      t.integer :count, default: 0
+      t.boolean :active, default: true
 
       t.timestamps
     end

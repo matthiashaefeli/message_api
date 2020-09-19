@@ -9,10 +9,11 @@ RSpec.describe 'Message', type: :request do
       get '/message', params: { "to_number": '555' }
       res = JSON.parse(response.body)
       expect(response.status).to eq 200
-      res.any? { |m| m['id'] == message1.id }
-      res.any? { |m| m['id'] != message3.id }
+      expect(res.any? { |m| m['id'] == message1.id }).to be true
+      expect(res.any? { |m| m['id'] != message3.id }).to be true
     end
   end
+
   describe 'create' do
     it 'creates Message and returns message object' do
       post '/message', params: { "to_number": '555555555',
