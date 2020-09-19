@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
   def index
+    messages = Message.where(to_number: params[:to_number])
+    render json: messages
   end
 
   def create

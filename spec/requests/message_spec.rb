@@ -1,6 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Message', type: :request do
+  describe 'index' do
+    it 'returns all messages of certain to_number' do
+      message1 = FactoryBot.create(:message, to_number: '555')
+      message2 = FactoryBot.create(:message, to_number: '555')
+      message3 = FactoryBot.create(:message, to_number: '111')
+      get '/message', params: { "to_number": '555' }
+      res = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      res.any? { |m| m['id'] == message1.id }
+      res.any? { |m| m['id'] != message3.id }
+    end
+  end
   describe 'create' do
     it 'creates Message and returns message object' do
       post '/message', params: { "to_number": '555555555',
