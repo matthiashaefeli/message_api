@@ -2,6 +2,11 @@
 
 Message is a Rails Api that receives POST request with params to_number and message.
 
+- create and update Providers.
+- Set load balance of each Provider.
+- Return all Providers and Messages
+
+
 ## How to set up locally
 
 ```
