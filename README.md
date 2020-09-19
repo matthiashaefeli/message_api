@@ -107,6 +107,20 @@ Body: raw
 }
 ```
 
+### Search for specific messages with provider_id
+
+GET: http://localhost:3000/message
+
+Headers: KEY: Content-Type VALUE: application/json
+
+Body: raw
+
+```
+{
+    "provider_id": 1
+}
+```
+
 Api will respond with array of objects
 
 
