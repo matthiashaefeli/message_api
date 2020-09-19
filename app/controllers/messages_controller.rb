@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
       else
         Message.all
       end
+    response.headers['Access-Control-Allow-Origin'] = '*'
     render json: messages
   end
 
