@@ -36,7 +36,7 @@ $ heroku run rake db:seed
 
 ### Send new Message
 
-POST: http://localhost:3000/new_message
+POST: http://localhost:3000/message
 
 Headers: KEY: Content-Type VALUE: application/json
 
@@ -77,3 +77,22 @@ Body: raw
     "status": "delivered"
 }
 ```
+
+### Create new Provider
+
+POST: http://localhost:3000/provider
+
+Headers: KEY: Content-Type VALUE: application/json
+
+Body: raw
+
+```
+{
+    "name": "Provider",
+    "url": "https://jo3kcwlvke.execute-api.us-west-2.amazonaws.com/dev/provider1",
+    "load": "10"
+}
+```
+
+Api will respond with provider object.
+

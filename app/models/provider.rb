@@ -1,4 +1,7 @@
 class Provider < ApplicationRecord
+  validates :name, :url, :load, presence: :true
+  validates :load, :numericality => true
+
   def self.ready_to_use(message_creator)
     if message_creator.loop && message_creator.providers_down.length == Provider.count
       return nil
