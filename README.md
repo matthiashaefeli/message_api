@@ -51,7 +51,7 @@ $ heroku run rake db:seed
 
 ### Send new Message
 
-POST: http://localhost:3000/message
+POST: https://mat-texting-service.herokuapp.com/message
 
 Headers: KEY: Content-Type VALUE: application/json
 
@@ -80,7 +80,7 @@ Body: raw
 
 ### Update Message status
 
-POST: http://localhost:3000/update_message
+POST: https://mat-texting-service.herokuapp.com/update_message
 
 Headers: KEY: Content-Type VALUE: application/json
 
@@ -95,7 +95,7 @@ Body: raw
 
 ### Search for specific messages with to_number
 
-GET: http://localhost:3000/message
+GET: https://mat-texting-service.herokuapp.com/message
 
 Headers: KEY: Content-Type VALUE: application/json
 
@@ -109,7 +109,7 @@ Body: raw
 
 ### Search for specific messages with provider_id
 
-GET: http://localhost:3000/message
+GET: https://mat-texting-service.herokuapp.com/message
 
 Headers: KEY: Content-Type VALUE: application/json
 
@@ -126,7 +126,7 @@ Api will respond with array of objects
 
 ### Create new Provider
 
-POST: http://localhost:3000/provider
+POST: https://mat-texting-service.herokuapp.com/provider
 
 Headers: KEY: Content-Type VALUE: application/json
 
@@ -135,7 +135,7 @@ Body: raw
 ```
 {
     "name": "Provider",
-    "url": "https://jo3kcwlvke.execute-api.us-west-2.amazonaws.com/dev/provider1",
+    "url": "https://provider1",
     "load": "10"
 }
 ```
@@ -144,13 +144,13 @@ Api will respond with provider object.
 
 ### Get all providers
 
-GET: http://loalhost:3000/provider
+GET: https://mat-texting-service.herokuapp.com//provider
 
 Api will respond with an array of provider objects
 
 ### Update provider
 
-POST: http://localhost:3000/update_provider
+POST: https://mat-texting-service.herokuapp.com/update_provider
 
 Headers: KEY: Content-Type VALUE: application/json
 

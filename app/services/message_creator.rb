@@ -29,7 +29,7 @@ class MessageCreator
 
     parameters = { "to_number": @message.to_number,
                   "message": @message.message,
-                  "callback_url": 'https://ex.com' }.to_json
+                  "callback_url": 'https://mat-texting-service.herokuapp.com/update_message' }.to_json
 
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
