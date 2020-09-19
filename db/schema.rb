@@ -29,7 +29,8 @@ ActiveRecord::Schema.define(version: 2020_09_18_133410) do
     t.string "name"
     t.string "url"
     t.integer "load"
-    t.integer "count"
+    t.integer "count", default: 0
+    t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

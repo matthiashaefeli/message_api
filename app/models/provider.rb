@@ -20,6 +20,6 @@ class Provider < ApplicationRecord
   end
 
   def self.providers_available(ids_array)
-    self.where.not(id: ids_array).where('count < load')
+    self.where.not(id: ids_array).where('count < load and active = true')
   end
 end
