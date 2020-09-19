@@ -17,5 +17,6 @@ class MessagesController < ApplicationController
     message = Message.find_by(message_id: params[:message_id])
     message.status = params[:status]
     message.save
+    render json: message
   end
 end
