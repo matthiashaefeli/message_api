@@ -2,6 +2,7 @@
 class ProvidersController < ApplicationController
   def index
     providers = Provider.all
+    response.headers['Access-Control-Allow-Origin'] = '*'
     render json: providers
   end
 
@@ -9,8 +10,10 @@ class ProvidersController < ApplicationController
     provider = Provider.new(provider_params)
     if provider.valid?
       provider.save
+      response.headers['Access-Control-Allow-Origin'] = '*'
       render json: provider
     else
+      response.headers['Access-Control-Allow-Origin'] = '*'
       render json: { error: provider.errors.full_messages }, status: :bad_request
     end
   end
@@ -18,6 +21,7 @@ class ProvidersController < ApplicationController
   def update
     provider = Provider.find(params[:provider][:id])
     provider.update_attributes(provider_params)
+    response.headers['Access-Control-Allow-Origin'] = '*'
     render json: provider
   end
 
