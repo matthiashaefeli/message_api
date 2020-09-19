@@ -1,3 +1,4 @@
+# Provider Controller
 class ProvidersController < ApplicationController
   def index
     providers = Provider.all
@@ -22,7 +23,7 @@ class ProvidersController < ApplicationController
 
   private
 
-    def provider_params
-      params.require(:provider).permit(:name, :url, :load, :active)
-    end
+  def provider_params
+    params.require(:provider).permit(:name, :url, :load, :active)
+  end
 end
