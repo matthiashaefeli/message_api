@@ -88,6 +88,23 @@ Body: raw
 }
 ```
 
+### Search for specific messages with to_number
+
+GET: http://localhost:3000/message
+
+Headers: KEY: Content-Type VALUE: application/json
+
+Body: raw
+
+```
+{
+    "to_number": "5555555555"
+}
+```
+
+Api will respond with array of objects
+
+
 ### Create new Provider
 
 POST: http://localhost:3000/provider
@@ -106,9 +123,15 @@ Body: raw
 
 Api will respond with provider object.
 
-### Search for specific messages with to_number
+### Get all providers
 
-GET: http://localhost:3000/message
+GET: http://loalhost:3000/provider
+
+Api will respond with an array of provider objects
+
+### Update provider
+
+POST: http://localhost:3000/update_provider
 
 Headers: KEY: Content-Type VALUE: application/json
 
@@ -116,8 +139,17 @@ Body: raw
 
 ```
 {
-    "to_number": "5555555555"
+    "id": 2,
+    "active": false
 }
 ```
 
-Api will respond with array of objects
+```
+{
+    "id": 2,
+    "load": 20
+}
+```
+
+Api will respond with provider object
+
