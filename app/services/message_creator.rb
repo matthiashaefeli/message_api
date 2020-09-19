@@ -60,4 +60,8 @@ class MessageCreator
   def loop
     @loop
   end
+
+  def loop=(loop)
+    @loop = loop
+  end
 end
