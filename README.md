@@ -18,6 +18,16 @@ $ rails db:seed
  ```
  $ rails s
  ```
+ 
+ ## Running test
+ 
+ ```
+ $ rspec
+ ```
+ 
+ ## Test coverege
+ 
+ /message_api/coverage/index.html#_AllFiles
 
  ## Deploy to Heroku
 
