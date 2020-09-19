@@ -18,8 +18,10 @@ class MessagesController < ApplicationController
     if message.valid?
       message.save
       MessageCreator.new(message).send_message
+      response.headers['Access-Control-Allow-Origin'] = '*'
       render json: message
     else
+      response.headers['Access-Control-Allow-Origin'] = '*'
       render json: { error: message.errors.full_messages }, status: :bad_request
     end
   end
@@ -28,6 +30,7 @@ class MessagesController < ApplicationController
     message = Message.find_by(message_id: params[:message_id])
     message.status = params[:status]
     message.save
+    response.headers['Access-Control-Allow-Origin'] = '*'
     render json: message
   end
 end
