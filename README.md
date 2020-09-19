@@ -106,3 +106,18 @@ Body: raw
 
 Api will respond with provider object.
 
+### Search for specific messages with to_number
+
+GET: http://localhost:3000/message
+
+Headers: KEY: Content-Type VALUE: application/json
+
+Body: raw
+
+```
+{
+    "to_number": "5555555555"
+}
+```
+
+Api will respond with array of objects
