@@ -42,6 +42,8 @@ class MessageCreator
       @message.message_id = response_hash[:message_id]
       @message.provider_id = provider.id
       @message.save
+      provider.count += 1
+      provider.save
       true
     else
       false
