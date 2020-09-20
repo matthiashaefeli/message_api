@@ -1,7 +1,7 @@
 # Provider Controller
 class ProvidersController < ApplicationController
   def index
-    providers = Provider.all
+    providers = Provider.order(:id)
     response.headers['Access-Control-Allow-Origin'] = '*'
     render json: providers
   end

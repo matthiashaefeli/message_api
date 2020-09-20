@@ -3,11 +3,11 @@ class MessagesController < ApplicationController
   def index
     messages =
       if params[:to_number]
-        Message.where(to_number: params[:to_number])
+        Message.where(to_number: params[:to_number]).order(id: :desc)
       elsif params[:provider_id]
-        Message.where(provider_id: params[:provider_id])
+        Message.where(provider_id: params[:provider_id]).order(id: :desc)
       else
-        Message.all
+        Message.order(id: :desc)
       end
     response.headers['Access-Control-Allow-Origin'] = '*'
     render json: messages
