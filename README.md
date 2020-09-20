@@ -6,6 +6,9 @@ Message is a Rails Api that receives POST request with params to_number and mess
 - Set load balance of each Provider.
 - Return all Providers and Messages
 
+## Requirements
+
+Ruby 2.7.0 Rails 6.0.3.3
 
 ## How to set up locally
 
